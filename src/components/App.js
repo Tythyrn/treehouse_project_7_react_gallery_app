@@ -20,20 +20,62 @@ export default class App extends Component {
     super();
     this.state = {
       photos: [],
+      catPhotos: [],
+      dogPhotos: [],
+      computerPhotos: [],
       loading: true
     };
   } 
 
   componentDidMount () {
-    this.performSearch();
+    this.performCatSearch();
+    this.performDogSearch();
+    this.performComputerSearch();
   }
 
-  performSearch = (query = 'cats') => {
+  performSearch = (query) => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         this.setState({ 
           photos: response.data.photos.photo,
           loading: false
+        });
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+    });
+  }
+
+  performCatSearch = (query = 'cats') => {
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+      .then(response => {
+        this.setState({ 
+          catPhotos: response.data.photos.photo,
+          loading: false
+        });
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+    });
+  }
+
+  performDogSearch = (query = 'dog') => {
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+      .then(response => {
+        this.setState({ 
+          dogPhotos: response.data.photos.photo,
+        });
+      })
+      .catch(error => {
+        console.log('Error fetching and parsing data', error);
+    });
+  }
+
+  performComputerSearch = (query = 'computer') => {
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
+      .then(response => {
+        this.setState({ 
+          computerPhotos: response.data.photos.photo,
         });
       })
       .catch(error => {
@@ -48,11 +90,11 @@ export default class App extends Component {
         <SearchForm search={this.performSearch}/>
         <MainNav search={this.performSearch}/>
         <Switch>
-          <Route exact path="/" render={() => <PhotoContainer photos={this.state.photos} /> } />
-          <Route path="/cats" render={() => <PhotoContainer photos={this.state.photos} /> } />
-          <Route path="/dogs" render={() => <PhotoContainer photos={this.state.photos} /> } />
-          <Route path="/computers" render={() => <PhotoContainer photos={this.state.photos} /> } />
-          <Route path="/search/:query" component={PhotoContainer} />
+          <Route exact path="/" render={() => <PhotoContainer photos={this.state.catPhotos} /> } />
+          <Route path="/cats" render={() => <PhotoContainer photos={this.state.catPhotos} /> } />
+          <Route path="/dogs" render={() => <PhotoContainer photos={this.state.dogPhotos} /> } />
+          <Route path="/computers" render={() => <PhotoContainer photos={this.state.computerPhotos} /> } />
+          <Route path="/search/:query" render={() => <PhotoContainer photos={this.state.photos} /> } />
           <Route component={NoResults} />
         </Switch>
       </div>
