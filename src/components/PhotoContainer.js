@@ -1,16 +1,18 @@
-import React from 'react';
-import Gif from './Gif';
+import React, { Component } from 'react';
+import Photo from './Photo';
 
-export default function PhotoContainer () {
-  return (
-    <div className="photo-container">
-      <h2>Results</h2>
-      <ul>
-        <Gif />
-        <Gif />
-        <Gif />
-        <Gif />
-      </ul>
-    </div>
-  );
+export default class PhotoContainer extends Component {
+  render () {
+    return (
+      <div className="photo-container">
+        <h2>Results</h2>
+        <ul>
+          <Photo />
+          <Photo />
+          <Photo />
+          <Photo />
+        </ul>
+      </div>
+    );
+  }
 }
