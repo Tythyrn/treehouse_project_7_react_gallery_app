@@ -17,6 +17,7 @@ export default class App extends Component {
         <SearchForm />
         <MainNav />
         <PhotoContainer />
+        <NoResults />
       </div>
     );
   }
