@@ -4,6 +4,7 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
+//Top of the hierarchy.  This loads the App onto the screen
 ReactDOM.render(
     <App />,
     document.getElementById('root')

@@ -1,5 +1,6 @@
 import React from 'react';
 
+//No results page displays of Flickr returns no photos
 export default function NoResults () {
   return (
     <li className="not-found">

@@ -2,6 +2,7 @@ body {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   color: #3f4850;
+  background-color: #c5c8cc;
 }
 
 h2 {
@@ -27,7 +28,7 @@ a {
 
 .search-form button {
   outline: none;
-  background-color: #438bbd;
+  background-color: #6153e0;
   border: none;
   padding: 0px 15px;
   border-radius: 0 0.35em 0.35em 0;
@@ -45,6 +46,10 @@ input {
   outline: none;
 }
 
+input:focus {
+  border: 3px solid #6153e0;
+}
+
 .main-nav li {
   width: 100%;
   margin-bottom: 1em;
@@ -52,7 +57,7 @@ input {
 
 .main-nav a {
   display: block;
-  background: #438bbd;
+  background: #6153e0;
   border-radius: 3px;
   padding: 5px;
   color: #fff;
@@ -61,7 +66,7 @@ input {
 .main-nav .active,
 .main-nav a:hover,
 .search-form button:hover {
-  background-color: #275270;
+  background-color: #241a53;
 }
 
 .photo-container ul {
@@ -77,6 +82,7 @@ input {
   height: 165px;
   overflow: hidden;
   margin-bottom: 15px;
+  box-shadow: 5px 5px 10px 0px rgba(0,0,0,0.75);
 }
 
 .photo-container ul img {
